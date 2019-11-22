@@ -2,3 +2,4 @@
 .vim
 .vscode
 models
+__pycache__
