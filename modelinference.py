@@ -104,7 +104,6 @@ class ModelInference:
     model_name_or_path -- Path to pre-trained model or shortcut name (see ALL_MODELS)
     padding_text -- Padding text to long memory models (TransfoXL). Default if unspecified
     xlm_lang -- Optional language when used with the XLM model
-    length -- Output max length
     num_samples -- Number of outputs to produce
     temperature -- sampling temperature. 0 implies greedy
     repetition_penalty -- primarily useful for CTRL model; in that case, use 1.2
@@ -121,7 +120,6 @@ class ModelInference:
         model_name_or_path,
         padding_text="",
         xlm_lang="",
-        length=20,
         num_samples=1,
         temperature=1.0,
         repetition_penalty=1.0,
@@ -135,7 +133,6 @@ class ModelInference:
         self.model_name_or_path = model_name_or_path
         self.padding_text = padding_text
         self.xlm_lang = xlm_lang
-        self.length = length
         self.num_samples = num_samples
         self.temperature = temperature
         self.repetition_penalty = repetition_penalty
@@ -163,15 +160,6 @@ class ModelInference:
         print(f"Device: {self.device}")
         self.model.to(self.device)
         self.model.eval()
-
-        if self.length < 0 and self.model.config.max_position_embeddings > 0:
-            self.length = self.model.config.max_position_embeddings
-        elif 0 < self.model.config.max_position_embeddings < self.length:
-            self.length = (
-                self.model.config.max_position_embeddings
-            )  # No generation bigger than model size
-        elif self.length < 0:
-            self.length = MAX_LENGTH  # avoid infinite loop
 
         if self.model_type in ["ctrl"]:
             if self.temperature > 0.7:
@@ -203,11 +191,25 @@ class ModelInference:
         else:
             self.xlm_mask_token = None
 
-    def sample_and_decode(self, prompt):
+    def sample_and_decode(self, prompt, length=20):
         """
-        sample from the model using prompt (and also padding_text, specified in
+        Sample from the model using prompt (and also padding_text, specified in
         __init__, for transfo-xl and xlnet) as context
+
+        Keyword arguments:
+        prompt -- the model prompt
+        length -- Output max length
         """
+
+        if length < 0 and self.model.config.max_position_embeddings > 0:
+            length = self.model.config.max_position_embeddings
+        elif 0 < self.model.config.max_position_embeddings < length:
+            length = (
+                self.model.config.max_position_embeddings
+            )  # No generation bigger than model size
+        elif length < 0:
+            length = MAX_LENGTH  # avoid infinite loop
+
         raw_text = prompt
         if self.model_type in ["transfo-xl", "xlnet"]:
             # Models with memory likes to have a long prompt for short inputs.
@@ -223,7 +225,7 @@ class ModelInference:
                     "WARNING! You are not starting your generation from a control code so you won't get good results"
                 )
 
-        out = self._sample_sequence(context=context_tokens)
+        out = self._sample_sequence(context_tokens, length)
         out = out[:, len(context_tokens) :].tolist()
         all_text = []
         for o in out:
@@ -275,13 +277,13 @@ class ModelInference:
             logits[indices_to_remove] = filter_value
         return logits
 
-    def _sample_sequence(self, context):
+    def _sample_sequence(self, context, length):
         is_xlnet = bool(self.model_type == "xlnet")
         context = torch.tensor(context, dtype=torch.long, device=self.device)
         context = context.unsqueeze(0).repeat(self.num_samples, 1)
         generated = context
         with torch.no_grad():
-            for _ in trange(self.length):
+            for _ in trange(length):
 
                 inputs = {"input_ids": generated}
                 if is_xlnet:
