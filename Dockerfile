@@ -10,6 +10,7 @@ RUN pip install -r requirements.txt
 
 COPY modelinference.py modelinference.py
 COPY api.py api.py
+COPY textcleaner.py textcleaner.py
 
 EXPOSE 8008
 
