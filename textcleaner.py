@@ -23,7 +23,6 @@ def clean_children_gpt2(model_text, trim_dangling=True):
 
     if trim_dangling:
         last_line_idx = model_text.rfind("\n")
-        print(f"Last line: {model_text[last_line_idx+1:]}")
         if not re.search(r"[.!?][\"']?$", model_text[last_line_idx + 1 :]):
             return model_text[:last_line_idx]
 
