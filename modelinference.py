@@ -279,13 +279,21 @@ class ModelInference:
 
     def _sample_sequence(self, context, length):
         is_xlnet = bool(self.model_type == "xlnet")
+        use_past = self.model_type in ("gpt2", "ctrl", "transfo-xl")
         context = torch.tensor(context, dtype=torch.long, device=self.device)
         context = context.unsqueeze(0).repeat(self.num_samples, 1)
         generated = context
+        outputs = None
         with torch.no_grad():
             for _ in trange(length):
 
-                inputs = {"input_ids": generated}
+                if use_past:
+                    if outputs is None:
+                        inputs = {"input_ids": generated, "past": None}
+                    else:
+                        inputs = {"input_ids": generated[:, -1:], "past": outputs[1]}
+                else:
+                    inputs = {"input_ids": generated}
                 if is_xlnet:
                     # XLNet is a direct (predict same token, not next token) and bi-directional model by default
                     # => need one additional dummy token in the input (will be masked), attention mask and target mapping (see model docstring)
