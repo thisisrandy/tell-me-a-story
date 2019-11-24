@@ -287,11 +287,8 @@ class ModelInference:
         with torch.no_grad():
             for _ in trange(length):
 
-                if use_past:
-                    if outputs is None:
-                        inputs = {"input_ids": generated, "past": None}
-                    else:
-                        inputs = {"input_ids": generated[:, -1:], "past": outputs[1]}
+                if use_past and outputs is not None:
+                    inputs = {"input_ids": generated[:, -1:], "past": outputs[1]}
                 else:
                     inputs = {"input_ids": generated}
                 if is_xlnet:
