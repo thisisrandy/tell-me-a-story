@@ -1,0 +1,10 @@
+# this file is needed to ensure that the model is uploaded when building via
+# gcloud
+.git
+.gitignore
+.venv
+.vim
+.vscode
+models/fine-tuned_awd_lstm_20
+__pycache__
+
