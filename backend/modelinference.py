@@ -112,6 +112,7 @@ class ModelInference:
     no_cuda -- Avoid using CUDA when available
     seed -- random seed for initialization
     stop_token -- Token at which text generation is stopped
+    progress_bar -- If true, display a progress bar while sampling. Turn off for better logging
     """
 
     def __init__(
@@ -128,6 +129,7 @@ class ModelInference:
         no_cuda=None,
         seed=42,
         stop_token=None,
+        progress_bar=True,
     ):
         self.model_type = model_type
         self.model_name_or_path = model_name_or_path
@@ -141,6 +143,7 @@ class ModelInference:
         self.no_cuda = no_cuda
         self.seed = seed
         self.stop_token = stop_token
+        self.progress_bar = progress_bar
 
         self.device = torch.device(
             "cuda"
@@ -284,8 +287,9 @@ class ModelInference:
         context = context.unsqueeze(0).repeat(self.num_samples, 1)
         generated = context
         outputs = None
+        range_fn = trange if self.progress_bar else range
         with torch.no_grad():
-            for _ in trange(length):
+            for _ in range_fn(length):
 
                 if use_past and outputs is not None:
                     inputs = {"input_ids": generated[:, -1:], "past": outputs[1]}
