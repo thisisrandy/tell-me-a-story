@@ -22,7 +22,10 @@ async def story(request):
     print(prompt)
     length = int(request.query_params["length"])
     return JSONResponse(
-        {"response": clean(inference.sample_and_decode(prompt, length)[0])}
+        {
+            "prompt": prompt,
+            "story": clean(inference.sample_and_decode(prompt, length)[0]),
+        }
     )
 
 
