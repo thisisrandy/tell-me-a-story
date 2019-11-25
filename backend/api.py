@@ -1,7 +1,12 @@
 from io import BytesIO
 import uvicorn
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, HTMLResponse, RedirectResponse
+from starlette.responses import (
+    JSONResponse,
+    HTMLResponse,
+    RedirectResponse,
+    PlainTextResponse,
+)
 import aiohttp
 import asyncio
 import os
@@ -20,15 +25,23 @@ inference = ModelInference(
 
 @app.route("/story", methods=["GET"])
 async def story(request):
-    prompt = request.query_params["prompt"]
-    print(prompt)
-    length = int(request.query_params["length"])
-    return JSONResponse(
-        {
-            "prompt": prompt,
-            "story": clean(inference.sample_and_decode(prompt, length)[0]),
-        }
-    )
+    try:
+        prompt = request.query_params["prompt"]
+        length = int(request.query_params["length"])
+        return JSONResponse(
+            {
+                "prompt": prompt,
+                "story": clean(inference.sample_and_decode(prompt, length)[0]),
+            }
+        )
+    except KeyError as ke:
+        return PlainTextResponse(
+            f"Required param {ke} missing in request", status_code=400
+        )
+    except ValueError as ve:
+        return PlainTextResponse(
+            f"Param 'length' must be a valid integer value", status_code=400
+        )
 
 
 @app.route("/check-cuda", methods=["GET"])
