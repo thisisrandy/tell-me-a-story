@@ -25,6 +25,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import argparse
 import logging
 from tqdm import trange
+from time import time
 
 import torch
 import torch.nn.functional as F
@@ -288,6 +289,12 @@ class ModelInference:
         generated = context
         outputs = None
         range_fn = trange if self.progress_bar else range
+        if self.progress_bar:
+            range_fn = trange
+        else:
+            range_fn = range
+            print("Sampling has begun")
+            start_time = time()
         with torch.no_grad():
             for _ in range_fn(length):
 
@@ -366,5 +373,7 @@ class ModelInference:
                         F.softmax(filtered_logits, dim=-1), num_samples=1
                     )
                 generated = torch.cat((generated, next_token), dim=1)
+        if not self.progress_bar:
+            print(f"Sampling completed in {time()-start_time:.2f} seconds")
         return generated
 
