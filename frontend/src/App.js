@@ -50,6 +50,7 @@ function App() {
   const handleSubmit = async e => {
     e.preventDefault();
     if (prompt) {
+      setPrompt("");
       setPromptDisabled(true);
       const id = Date.now();
       setStories([
@@ -60,11 +61,13 @@ function App() {
           story: "Composing... (this will take a minute or two)"
         }
       ]);
-      const url = `${apiUrl}length=${storyLength}&prompt=${encodeURI(prompt)}`;
-      setPrompt("");
-      const res = await fetch(url);
+      const res = await fetch(
+        `${apiUrl}length=${storyLength}&prompt=${encodeURI(prompt)}`
+      );
       const json = await res.json();
-      setStories([
+      // stories is stale inside this closure. we can get the fresh value by
+      // using a functional update
+      setStories(stories => [
         ...stories.slice(0, stories.length - 1),
         {
           id: id,
