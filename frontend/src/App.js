@@ -59,6 +59,8 @@ function App() {
       setPrompt("");
       setPromptDisabled(true);
       const id = Date.now();
+      // note that it's still safe to use prompt because it remains stale
+      // inside the closure
       setStories([
         ...stories,
         {
