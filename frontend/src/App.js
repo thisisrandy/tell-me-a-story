@@ -7,10 +7,7 @@ import {
   Typography,
   AppBar,
   Toolbar,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText
+  IconButton
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Menu } from "@material-ui/icons";
@@ -37,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2)
+  },
+  typography: {
+    whiteSpace: "pre-line"
   }
 }));
 
@@ -58,7 +58,7 @@ function App() {
         {
           id: id,
           prompt: prompt,
-          story: "Composing... (this will take a minute or two)"
+          story: "... (composing. This will take a minute or two)"
         }
       ]);
       const res = await fetch(
@@ -121,16 +121,17 @@ function App() {
             </Button>
           </form>
         </Paper>
-        <List>
-          {stories
-            .slice(0)
-            .reverse()
-            .map(({ id, prompt, story }) => (
-              <ListItem key={id}>
-                <ListItemText primary={prompt} secondary={story} />
-              </ListItem>
-            ))}
-        </List>
+        {stories
+          .slice(0)
+          .reverse()
+          .map(({ id, prompt, story }) => (
+            <Paper key={id} className={classes.paper}>
+              <Typography className={classes.typography} component="p">
+                {prompt}
+                <i>{story}</i>
+              </Typography>
+            </Paper>
+          ))}
       </div>
     </React.Fragment>
   );
