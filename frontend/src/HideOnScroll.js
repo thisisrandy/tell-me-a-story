@@ -5,7 +5,7 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import PropTypes from "prop-types";
 import Slide from "@material-ui/core/Slide";
 
-function HideOnScroll(props) {
+export default function HideOnScroll(props) {
   const { children } = props;
   const trigger = useScrollTrigger(window());
 
