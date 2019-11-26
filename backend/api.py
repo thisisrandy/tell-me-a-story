@@ -29,7 +29,7 @@ async def story(request):
     try:
         prompt = request.query_params["prompt"]
         length = int(request.query_params["length"])
-        trim_dangling = request.query_params.get("trim_dangling", True)
+        trim_dangling = bool(request.query_params.get("trim_dangling", True))
         quote_style = request.query_params.get("quote_style", "standard")
         return JSONResponse(
             {
