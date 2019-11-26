@@ -14,9 +14,9 @@ import { Menu } from "@material-ui/icons";
 import HideOnScroll from "./HideOnScroll";
 import PeterRabbit from "./peter_rabbit.jpg";
 
-// const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?";
+// const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
 // const storyLength = 500;
-const apiUrl = "http://0.0.0.0:8008/story?";
+const apiUrl = "http://0.0.0.0:8008/story?quote_style=cursive&";
 const storyLength = 50;
 
 const useStyles = makeStyles(theme => ({
