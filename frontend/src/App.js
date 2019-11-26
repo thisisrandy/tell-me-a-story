@@ -35,8 +35,13 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
-  typography: {
-    whiteSpace: "pre-line"
+  story: {
+    whiteSpace: "pre-line",
+    fontFamily: "'Lovers Quarrel', cursive",
+    fontSize: "2rem"
+  },
+  title: {
+    fontFamily: "'Lovers Quarrel', cursive"
   }
 }));
 
@@ -92,7 +97,7 @@ function App() {
           >
             <Menu />
           </IconButton>
-          <Typography variant="h5" className={classes.title}>
+          <Typography variant="h3" className={classes.title}>
             Tell Me a Story
           </Typography>
         </Toolbar>
@@ -126,7 +131,7 @@ function App() {
           .reverse()
           .map(({ id, prompt, story }) => (
             <Paper key={id} className={classes.paper}>
-              <Typography className={classes.typography} component="p">
+              <Typography className={classes.story} component="p">
                 {prompt}
                 <i>{story}</i>
               </Typography>
