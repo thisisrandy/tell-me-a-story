@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Menu } from "@material-ui/icons";
+import PeterRabbit from "./peter_rabbit.jpg";
 
 // const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?";
 const apiUrl = "http://0.0.0.0:8008/story?";
@@ -103,6 +104,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <div className={classes.content}>
+        <img src={PeterRabbit} />
         <Paper className={classes.paper}>
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
