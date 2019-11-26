@@ -35,19 +35,27 @@ But when her father got tired of her all he said to her that she must go away an
 ` If you do, then you must send for a new cart, and sell my
 """
 
-print("== FULL 1000 TOKEN OUTPUT ==\n")
-wrap_print(clean_children_gpt2(text))
+print("== FULL 1000 TOKEN OUTPUT ==")
+wrap_print(clean_children_gpt2(text, quote_style="standard"))
 
 text = """
 I'm the first line.
 I'm the last line!
 """
-print("== VALID LAST LINE ==\n")
+print("\n== VALID LAST LINE ==")
 wrap_print(clean_children_gpt2(text))
 
 text = """
 I'm the first line.
 "Am I the last line?"
 """
-print("== VALID LAST LINE WITH QUOTES ==\n")
+print("\n== VALID LAST LINE WITH QUOTES ==")
 wrap_print(clean_children_gpt2(text))
+
+text = """
+I'm the first line.
+``Am I the last line?''
+"""
+print("\n== VALID LAST LINE WITH CURSIVE QUOTES ==")
+wrap_print(clean_children_gpt2(text))
+
