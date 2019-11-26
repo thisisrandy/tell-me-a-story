@@ -66,7 +66,8 @@ function App() {
         {
           id: id,
           prompt: prompt,
-          story: "... (composing. This will take a minute or two)"
+          story: "... (composing. This will take a minute or two)",
+          isGenerating: true
         }
       ]);
       const res = await fetch(
@@ -80,7 +81,8 @@ function App() {
         {
           id: id,
           prompt: json.prompt,
-          story: json.story
+          story: json.story,
+          isGenerating: false
         }
       ]);
       setPromptDisabled(false);
@@ -133,11 +135,13 @@ function App() {
         {stories
           .slice(0)
           .reverse()
-          .map(({ id, prompt, story }) => (
+          .map(({ id, prompt, story, isGenerating }) => (
             <Paper key={id} className={classes.paper}>
-              <Typography className={classes.story} component="p">
-                {prompt}
-                <i>{story}</i>
+              <Typography component="p">
+                <span className={classes.story}>{prompt}</span>
+                <span className={isGenerating ? "" : classes.story}>
+                  {isGenerating ? <i>{story}</i> : story}
+                </span>
               </Typography>
             </Paper>
           ))}
