@@ -104,7 +104,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <div className={classes.content}>
-        <img src={PeterRabbit} />
+        <img src={PeterRabbit} alt="Peter Rabbit" />
         <Paper className={classes.paper}>
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
