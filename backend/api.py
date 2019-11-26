@@ -25,6 +25,7 @@ inference = ModelInference(
 
 @app.route("/story", methods=["GET"])
 async def story(request):
+    response_headers = {"Access-Control-Allow-Origin": request.headers["Origin"]}
     try:
         prompt = request.query_params["prompt"]
         length = int(request.query_params["length"])
@@ -32,20 +33,26 @@ async def story(request):
             {
                 "prompt": prompt,
                 "story": clean(inference.sample_and_decode(prompt, length)[0]),
-            }
+            },
+            headers=response_headers,
         )
     except KeyError as ke:
         return PlainTextResponse(
-            f"Required param {ke} missing in request", status_code=400
+            f"Required param {ke} missing in request",
+            status_code=400,
+            headers=response_headers,
         )
     except ValueError as ve:
         return PlainTextResponse(
-            f"Param 'length' must be a valid integer value", status_code=400
+            f"Param 'length' must be a valid integer value",
+            status_code=400,
+            headers=response_headers,
         )
 
 
 @app.route("/check-cuda", methods=["GET"])
 async def check_cuda(request):
+    response_headers = {"Access-Control-Allow-Origin": request.headers["Origin"]}
     cuda_available = torch.cuda.is_available()
     return JSONResponse(
         {
@@ -53,12 +60,14 @@ async def check_cuda(request):
             "cuda_capability": torch.cuda.get_device_capability()[0]
             if cuda_available
             else "N/A",
-        }
+        },
+        headers=response_headers,
     )
 
 
 @app.route("/")
 def form(request):
+    response_headers = {"Access-Control-Allow-Origin": request.headers["Origin"]}
     return HTMLResponse(
         """
         <!DOCTYPE html>
@@ -76,7 +85,8 @@ def form(request):
             </ol>
         </body>
         </html>
-        """
+        """,
+        headers=response_headers,
     )
 
 
