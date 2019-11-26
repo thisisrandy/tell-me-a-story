@@ -29,10 +29,16 @@ async def story(request):
     try:
         prompt = request.query_params["prompt"]
         length = int(request.query_params["length"])
+        trim_dangling = request.query_params.get("trim_dangling", True)
+        quote_style = request.query_params.get("quote_style", "standard")
         return JSONResponse(
             {
                 "prompt": prompt,
-                "story": clean(inference.sample_and_decode(prompt, length)[0]),
+                "story": clean(
+                    inference.sample_and_decode(prompt, length)[0],
+                    trim_dangling=trim_dangling,
+                    quote_style=quote_style,
+                ),
             },
             headers=response_headers,
         )
@@ -80,7 +86,7 @@ def form(request):
             <h2>Tell me a story API server</h2>
             <p>Available routes:</p>
             <ol>
-                <li>GET /story: prompt, length</li>
+                <li>GET /story: prompt, length[, trim_dangling=True, quote_style="standard"]</li>
                 <li>GET /check-cuda</li>
             </ol>
         </body>
