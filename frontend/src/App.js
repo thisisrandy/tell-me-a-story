@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     margin: 20,
     padding: 20,
-    maxWidth: 800
+    maxWidth: 700
   },
   form: {
     display: "flex",
