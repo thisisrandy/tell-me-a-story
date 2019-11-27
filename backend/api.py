@@ -23,9 +23,17 @@ inference = ModelInference(
 )
 
 
+def get_cors_header(request):
+    return (
+        {"Access-Control-Allow-Origin": request.headers["Origin"]}
+        if "Origin" in request.headers
+        else None
+    )
+
+
 @app.route("/story", methods=["GET"])
 async def story(request):
-    response_headers = {"Access-Control-Allow-Origin": request.headers["Origin"]}
+    response_headers = get_cors_header(request)
     try:
         prompt = request.query_params["prompt"]
         length = int(request.query_params["length"])
@@ -58,7 +66,7 @@ async def story(request):
 
 @app.route("/check-cuda", methods=["GET"])
 async def check_cuda(request):
-    response_headers = {"Access-Control-Allow-Origin": request.headers["Origin"]}
+    response_headers = get_cors_header(request)
     cuda_available = torch.cuda.is_available()
     return JSONResponse(
         {
@@ -73,7 +81,7 @@ async def check_cuda(request):
 
 @app.route("/")
 def form(request):
-    response_headers = {"Access-Control-Allow-Origin": request.headers["Origin"]}
+    response_headers = get_cors_header(request)
     return HTMLResponse(
         """
         <!DOCTYPE html>
