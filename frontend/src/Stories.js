@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PeterRabbit from "./peter_rabbit.jpg";
 import { TextField, Button, Paper, Typography } from "@material-ui/core";
 import { useStyles } from "./useStyles";
+import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
 
 // const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
 // const storyLength = 500;
@@ -13,7 +14,8 @@ export default function Stories() {
   const [prompt, setPrompt] = useState("");
   const [promptDisabled, setPromptDisabled] = useState(false);
   const handlePromptUpdate = ({ target }) => setPrompt(target.value);
-  const [stories, setStories] = useState([]);
+  const [stories, setStories] = useStateWithLocalStorage("stories", []);
+
   const handleSubmit = async e => {
     e.preventDefault();
     if (prompt) {
