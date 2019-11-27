@@ -45,7 +45,10 @@ export default function TopBarContainer() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>What&apos;s this?</MenuItem>
+            <MenuItem onClick={handleClose}>Tell me a story!</MenuItem>
+            <MenuItem onClick={handleClose}>
+              What is this thing, anyways?
+            </MenuItem>
             <MenuItem onClick={handleClose}>Show me the code!</MenuItem>
           </Menu>
           <Typography variant="h3" className={classes.title}>
