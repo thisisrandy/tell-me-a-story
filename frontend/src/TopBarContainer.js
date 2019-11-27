@@ -31,7 +31,7 @@ export default function TopBarContainer() {
     setDrawerOpen(open);
   };
 
-  const sideList = () => (
+  const itemsList = () => (
     <div
       className={classes.topDrawer}
       role="presentation"
@@ -92,7 +92,7 @@ export default function TopBarContainer() {
         onOpen={toggleDrawer(true)}
         onClose={toggleDrawer(false)}
       >
-        {sideList()}
+        {itemsList()}
       </SwipeableDrawer>
     </React.Fragment>
   );
