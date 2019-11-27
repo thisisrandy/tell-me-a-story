@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
+  defaultRoute: {
+    marginTop: "10px"
+  },
   story: {
     whiteSpace: "pre-line",
     fontFamily: "'Lovers Quarrel', cursive",
