@@ -30,8 +30,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "'Lovers Quarrel', cursive"
   },
-  sideDrawer: {
-    width: 250
+  topDrawer: {
+    width: "auto"
   }
 }));
 

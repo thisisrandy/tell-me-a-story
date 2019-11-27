@@ -33,7 +33,7 @@ export default function TopBarContainer() {
 
   const sideList = () => (
     <div
-      className={classes.sideDrawer}
+      className={classes.topDrawer}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
@@ -83,7 +83,7 @@ export default function TopBarContainer() {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer anchor="top" open={drawerOpen} onClose={toggleDrawer(false)}>
         {sideList()}
       </Drawer>
     </React.Fragment>
