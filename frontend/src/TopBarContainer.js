@@ -4,7 +4,7 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Drawer,
+  SwipeableDrawer,
   List,
   ListItem,
   ListItemIcon,
@@ -83,9 +83,13 @@ export default function TopBarContainer() {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Drawer anchor="top" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <SwipeableDrawer
+        anchor="top"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+      >
         {sideList()}
-      </Drawer>
+      </SwipeableDrawer>
     </React.Fragment>
   );
 }
