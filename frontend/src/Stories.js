@@ -71,7 +71,12 @@ export default function Stories() {
             }
             disabled={promptDisabled}
           />
-          <Button type="submit" color="primary" variant="contained">
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            disabled={promptDisabled}
+          >
             Generate Story
           </Button>
         </form>
