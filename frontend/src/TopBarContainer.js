@@ -6,7 +6,6 @@ import {
   IconButton,
   SwipeableDrawer,
   List,
-  ListItem,
   ListItemIcon,
   ListItemText
 } from "@material-ui/core";
@@ -16,6 +15,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import HelpIcon from "@material-ui/icons/Help";
 import HideOnScroll from "./HideOnScroll";
 import { useStyles } from "./useStyles";
+import ListItemLink from "./ListItemLink";
 
 export default function TopBarContainer() {
   const classes = useStyles();
@@ -39,24 +39,24 @@ export default function TopBarContainer() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItem button>
+        <ListItemLink to="/stories">
           <ListItemIcon>
             <LocalLibraryIcon />
           </ListItemIcon>
           <ListItemText>Tell me a story!</ListItemText>
-        </ListItem>
-        <ListItem button>
+        </ListItemLink>
+        <ListItemLink to="/whatisit">
           <ListItemIcon>
             <HelpIcon />
           </ListItemIcon>
           <ListItemText>What is this thing?</ListItemText>
-        </ListItem>
-        <ListItem button>
+        </ListItemLink>
+        <ListItemLink to="/code">
           <ListItemIcon>
             <GitHubIcon />
           </ListItemIcon>
           <ListItemText>Show me the code!</ListItemText>
-        </ListItem>
+        </ListItemLink>
       </List>
     </div>
   );
