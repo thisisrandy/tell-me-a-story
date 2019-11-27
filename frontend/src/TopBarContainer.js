@@ -4,58 +4,88 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Menu,
-  MenuItem
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import HelpIcon from "@material-ui/icons/Help";
 import HideOnScroll from "./HideOnScroll";
 import { useStyles } from "./useStyles";
 
 export default function TopBarContainer() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  const toggleDrawer = open => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    )
+      return;
+
+    setDrawerOpen(open);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const sideList = () => (
+    <div
+      className={classes.sideDrawer}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
+        <ListItem button>
+          <ListItemIcon>
+            <LocalLibraryIcon />
+          </ListItemIcon>
+          <ListItemText>Tell me a story!</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <HelpIcon />
+          </ListItemIcon>
+          <ListItemText>What is this thing?</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GitHubIcon />
+          </ListItemIcon>
+          <ListItemText>Show me the code!</ListItemText>
+        </ListItem>
+      </List>
+    </div>
+  );
 
   return (
-    <HideOnScroll>
-      <AppBar position="sticky">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            aria-controls="main-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="main-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Tell me a story!</MenuItem>
-            <MenuItem onClick={handleClose}>
-              What is this thing, anyways?
-            </MenuItem>
-            <MenuItem onClick={handleClose}>Show me the code!</MenuItem>
-          </Menu>
-          <Typography variant="h3" className={classes.title}>
-            Tell Me a Story
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </HideOnScroll>
+    <React.Fragment>
+      <HideOnScroll>
+        <AppBar position="sticky">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              aria-controls="main-menu"
+              aria-haspopup="true"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h3" className={classes.title}>
+              Tell Me a Story
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+      <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>
+        {sideList()}
+      </Drawer>
+    </React.Fragment>
   );
 }
