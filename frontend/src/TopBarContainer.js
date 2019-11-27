@@ -86,6 +86,7 @@ export default function TopBarContainer() {
       <SwipeableDrawer
         anchor="top"
         open={drawerOpen}
+        onOpen={toggleDrawer(true)}
         onClose={toggleDrawer(false)}
       >
         {sideList()}
