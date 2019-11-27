@@ -33,6 +33,6 @@ export default function ButtonLink(props) {
 
 ButtonLink.propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any,
   className: PropTypes.string
 };
