@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 
-export function useStateWithLocalStorage(key, initialValue) {
+export function useStateWithLocalStorage(
+  key,
+  initialValue,
+  filter = () => true
+) {
   if (key in localStorage) initialValue = JSON.parse(localStorage.getItem(key));
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
-    // TODO: provide a filter for incomplete items, e.g. those waiting for a
-    // response from some external API
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(
+      key,
+      JSON.stringify(Array.isArray(value) ? value.filter(filter) : value)
+    );
   }, [value]);
 
   return [value, setValue];

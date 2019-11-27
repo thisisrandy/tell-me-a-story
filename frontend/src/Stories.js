@@ -14,7 +14,11 @@ export default function Stories() {
   const [prompt, setPrompt] = useState("");
   const [promptDisabled, setPromptDisabled] = useState(false);
   const handlePromptUpdate = ({ target }) => setPrompt(target.value);
-  const [stories, setStories] = useStateWithLocalStorage("stories", []);
+  const [stories, setStories] = useStateWithLocalStorage(
+    "stories",
+    [],
+    story => !story.isGenerating
+  );
 
   const handleSubmit = async e => {
     e.preventDefault();
