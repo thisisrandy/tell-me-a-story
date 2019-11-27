@@ -51,7 +51,10 @@ export default function TopBarContainer() {
           </ListItemIcon>
           <ListItemText>What is this thing?</ListItemText>
         </ListItemLink>
-        <ListItemLink to="/code">
+        <ListItemLink
+          to="https://github.com/thisisrandy/tell-me-a-story"
+          isExternal
+        >
           <ListItemIcon>
             <GitHubIcon />
           </ListItemIcon>
