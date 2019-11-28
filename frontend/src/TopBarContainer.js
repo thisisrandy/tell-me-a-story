@@ -6,6 +6,7 @@ import {
   IconButton,
   SwipeableDrawer,
   List,
+  ListItem,
   ListItemIcon,
   ListItemText
 } from "@material-ui/core";
@@ -41,27 +42,41 @@ export default function TopBarContainer() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItemLink to="/stories">
-          <ListItemIcon>
-            <LocalLibraryIcon />
-          </ListItemIcon>
-          <ListItemText>Tell me a story!</ListItemText>
-        </ListItemLink>
-        <ListItemLink to="/whatisit">
-          <ListItemIcon>
-            <HelpIcon />
-          </ListItemIcon>
-          <ListItemText>What is this thing?</ListItemText>
-        </ListItemLink>
-        <ListItemLink
-          to="https://github.com/thisisrandy/tell-me-a-story"
-          isExternal
-        >
-          <ListItemIcon>
-            <GitHubIcon />
-          </ListItemIcon>
-          <ListItemText>Show me the code!</ListItemText>
-        </ListItemLink>
+        {[
+          {
+            to: "/stories",
+            text: "Tell me a story!",
+            icon: <LocalLibraryIcon />
+          },
+          {
+            to: "/whatisthis",
+            text: "What is this thing?",
+            icon: <HelpIcon />
+          },
+          {
+            to: "https://github.com/thisisrandy/tell-me-a-story",
+            text: "Show me the code!",
+            icon: <GitHubIcon />,
+            isExternal: true
+          }
+        ].map(({ to, text, icon, isExternal }) =>
+          isExternal ? (
+            <ListItem
+              key={to}
+              href={to}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText>{text}</ListItemText>
+            </ListItem>
+          ) : (
+            <ListItemLink key={to} to={to}>
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText>{text}</ListItemText>
+            </ListItemLink>
+          )
+        )}
       </List>
     </div>
   );
