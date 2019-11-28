@@ -11,7 +11,7 @@ export default function DefaultRoute() {
     <div className={classes.content}>
       <img src={PeterRabbit} alt="Peter Rabbit" />
       <Typography variant="h5" className={classes.defaultRoute}>
-        Nothing here!
+        Nothing here (yet?)!
       </Typography>
       <ButtonLink to="/stories" className={classes.defaultRoute}>
         Return home
