@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 700,
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    opacity: 0.9
   },
   form: {
     display: "flex",
