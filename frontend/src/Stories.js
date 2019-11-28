@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import PeterRabbit from "./peter_rabbit.jpg";
-import { TextField, Button, Paper, Typography } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Paper,
+  Typography,
+  CircularProgress
+} from "@material-ui/core";
 import { useStyles } from "./useStyles";
 import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
 
@@ -94,6 +100,7 @@ export default function Stories() {
                 {isGenerating ? <i>{story}</i> : story}
               </span>
             </Typography>
+            {isGenerating && <CircularProgress />}
           </Paper>
         ))}
     </div>

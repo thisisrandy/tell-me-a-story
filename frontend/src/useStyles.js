@@ -9,7 +9,10 @@ const useStyles = makeStyles(theme => ({
   paper: {
     margin: 20,
     padding: 20,
-    maxWidth: 700
+    maxWidth: 700,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   form: {
     display: "flex",
