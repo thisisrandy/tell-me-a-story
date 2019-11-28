@@ -26,9 +26,6 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
-  defaultRoute: {
-    marginTop: "10px"
-  },
   storyContainer: {
     marginBottom: "10px"
   },

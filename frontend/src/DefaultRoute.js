@@ -9,10 +9,10 @@ export default function DefaultRoute() {
   return (
     <div className={classes.content}>
       <Paper className={classes.paper}>
-        <Typography variant="h5" className={classes.defaultRoute}>
+        <Typography variant="h5" className={classes.formElement}>
           Nothing here (yet?)!
         </Typography>
-        <ButtonLink to="/stories" className={classes.defaultRoute}>
+        <ButtonLink to="/stories" className={classes.formElement}>
           Return home
         </ButtonLink>
       </Paper>
