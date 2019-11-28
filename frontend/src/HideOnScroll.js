@@ -1,5 +1,3 @@
-// Copied directly from
-// https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/app-bar/HideAppBar.js
 import React from "react";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import PropTypes from "prop-types";
