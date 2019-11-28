@@ -19,11 +19,17 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center"
   },
+  formElement: {
+    marginTop: "10px"
+  },
   menuButton: {
     marginRight: theme.spacing(2)
   },
   defaultRoute: {
     marginTop: "10px"
+  },
+  storyContainer: {
+    marginBottom: "10px"
   },
   story: {
     whiteSpace: "pre-line",

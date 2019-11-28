@@ -39,7 +39,6 @@ export default function Stories() {
         {
           id: id,
           prompt: prompt,
-          story: "... (composing. This will take a minute or two)",
           isGenerating: true
         }
       ]);
@@ -69,6 +68,7 @@ export default function Stories() {
         <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             name="prompt"
+            className={classes.formElement}
             label={promptDisabled ? "Composing..." : "Story prompt"}
             value={prompt}
             onChange={handlePromptUpdate}
@@ -83,6 +83,7 @@ export default function Stories() {
             type="submit"
             color="primary"
             variant="contained"
+            className={classes.formElement}
             disabled={promptDisabled}
           >
             Generate Story
@@ -94,11 +95,19 @@ export default function Stories() {
         .reverse()
         .map(({ id, prompt, story, isGenerating }) => (
           <Paper key={id} className={classes.paper}>
-            <Typography component="p">
-              <span className={classes.story}>{prompt}</span>
-              <span className={isGenerating ? "" : classes.story}>
-                {isGenerating ? <i>{story}</i> : story}
+            <Typography component="p" className={classes.storyContainer}>
+              <span className={classes.story}>
+                {prompt}
+                {isGenerating && "..."}
               </span>
+              {isGenerating ? (
+                <span>
+                  <br />
+                  <i>{"(composing. This will take a minute or two)"}</i>
+                </span>
+              ) : (
+                <span className={classes.story}>{story}</span>
+              )}
             </Typography>
             {isGenerating && <CircularProgress color="secondary" />}
           </Paper>
