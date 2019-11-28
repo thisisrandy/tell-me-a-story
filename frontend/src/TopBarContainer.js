@@ -14,6 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import HelpIcon from "@material-ui/icons/Help";
+import ImageIcon from "@material-ui/icons/Image";
 import HideOnScroll from "./HideOnScroll";
 import { useStyles } from "./useStyles";
 import ListItemLink from "./ListItemLink";
@@ -58,6 +59,11 @@ export default function TopBarContainer() {
             text: "Show me the code!",
             icon: <GitHubIcon />,
             isExternal: true
+          },
+          {
+            to: "/imagelicense",
+            text: "Background image license",
+            icon: <ImageIcon />
           }
         ].map(({ to, text, icon, isExternal }) =>
           isExternal ? (

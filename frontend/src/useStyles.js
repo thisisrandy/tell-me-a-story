@@ -39,6 +39,21 @@ const useStyles = makeStyles(theme => ({
   },
   topDrawer: {
     width: "auto"
+  },
+  ccLicenseType: {
+    marginRight: "5px"
+  },
+  ccImageLink: {
+    display: "inline-block",
+    whiteSpace: "none",
+    marginTop: "2px",
+    marginLeft: "3px",
+    height: "22px !important"
+  },
+  licenseImage: {
+    height: "inherit",
+    marginRight: "3px",
+    display: "inline-block"
   }
 }));
 
