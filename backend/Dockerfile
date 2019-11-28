@@ -3,7 +3,7 @@ FROM python:3.6-slim-stretch
 RUN apt-get update
 RUN apt-get install -y python3-dev gcc
 
-COPY models/fine-tuned_gpt2_1000/* models/fine-tuned_gpt2_1000/
+COPY models/childrens-stories_fine-tuned_gpt2/* models/childrens-stories_fine-tuned_gpt2/
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt

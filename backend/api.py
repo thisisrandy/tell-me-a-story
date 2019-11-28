@@ -19,7 +19,7 @@ app = Starlette()
 
 seed = randint(1, 50000)
 inference = ModelInference(
-    "gpt2", "./models/fine-tuned_gpt2_1000/", seed=seed, progress_bar=False
+    "gpt2", "./models/childrens-stories_fine-tuned_gpt2/", seed=seed, progress_bar=False
 )
 
 
