@@ -24,6 +24,7 @@ export default function TopBarContainer() {
   const toggleDrawer = open => event => {
     if (
       event &&
+      event.type &&
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     )
