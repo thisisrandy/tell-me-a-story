@@ -100,7 +100,7 @@ export default function Stories() {
                 {isGenerating ? <i>{story}</i> : story}
               </span>
             </Typography>
-            {isGenerating && <CircularProgress />}
+            {isGenerating && <CircularProgress color="secondary" />}
           </Paper>
         ))}
     </div>
