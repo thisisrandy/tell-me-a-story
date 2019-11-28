@@ -13,7 +13,7 @@ export function useStateWithLocalStorage(
       key,
       JSON.stringify(Array.isArray(value) ? value.filter(filter) : value)
     );
-  }, [value]);
+  }, [key, filter, value]);
 
   return [value, setValue];
 }

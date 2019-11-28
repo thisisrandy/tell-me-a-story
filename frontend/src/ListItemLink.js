@@ -25,7 +25,7 @@ export default function ListItemLink(props) {
           <Link to={to} {...itemProps} ref={ref} />
         )
       ),
-    [to]
+    [to, isExternal]
   );
 
   return (
