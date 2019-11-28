@@ -63,11 +63,7 @@ export default function Stories() {
         <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             name="prompt"
-            label={
-              promptDisabled
-                ? "Please wait for the computer to finish the story"
-                : "Story prompt"
-            }
+            label={promptDisabled ? "Composing..." : "Story prompt"}
             value={prompt}
             onChange={handlePromptUpdate}
             autoFocus={true}
