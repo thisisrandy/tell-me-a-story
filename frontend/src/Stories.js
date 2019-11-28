@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PeterRabbit from "./peter_rabbit.jpg";
 import {
   TextField,
   Button,
@@ -63,7 +62,6 @@ export default function Stories() {
 
   return (
     <div className={classes.content}>
-      <img src={PeterRabbit} alt="Peter Rabbit" />
       <Paper className={classes.paper}>
         <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
