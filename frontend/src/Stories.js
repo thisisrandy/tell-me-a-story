@@ -13,6 +13,7 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useStyles } from "./useStyles";
 import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
+import clsx from "clsx";
 
 // const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
 // const storyLength = 500;
@@ -101,7 +102,9 @@ export default function Stories() {
             <CardContent className={classes.cardContent}>
               <Typography
                 component="p"
-                className={isGenerating && classes.storyContainerGenerating}
+                className={clsx({
+                  [classes.storyContainerGenerating]: isGenerating
+                })}
               >
                 <span className={classes.story}>
                   {prompt}
