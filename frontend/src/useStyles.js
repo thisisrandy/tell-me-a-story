@@ -23,6 +23,23 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     opacity: 0.9
   },
+  card: {
+    margin: 20,
+    maxWidth: 700,
+    opacity: 0.9
+  },
+  cardActions: {
+    paddingTop: "0px"
+  },
+  cardIcon: {
+    marginLeft: "auto"
+  },
+  cardContent: {
+    paddingBottom: "0px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
   form: {
     display: "flex",
     flexDirection: "column",
@@ -34,8 +51,8 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
-  storyContainer: {
-    marginBottom: "10px"
+  storyContainerGenerating: {
+    paddingBottom: "10px"
   },
   story: {
     whiteSpace: "pre-line",

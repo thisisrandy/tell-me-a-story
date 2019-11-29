@@ -3,9 +3,14 @@ import {
   TextField,
   Button,
   Paper,
+  Card,
+  CardActions,
+  CardContent,
   Typography,
-  CircularProgress
+  CircularProgress,
+  IconButton
 } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { useStyles } from "./useStyles";
 import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
 
@@ -92,23 +97,35 @@ export default function Stories() {
         .slice(0)
         .reverse()
         .map(({ id, prompt, story, isGenerating }) => (
-          <Paper key={id} className={classes.paper}>
-            <Typography component="p" className={classes.storyContainer}>
-              <span className={classes.story}>
-                {prompt}
-                {isGenerating && "..."}
-              </span>
-              {isGenerating ? (
-                <span>
-                  <br />
-                  <i>{"(composing. This will take a minute or two)"}</i>
+          <Card key={id} className={classes.card}>
+            <CardContent className={classes.cardContent}>
+              <Typography
+                component="p"
+                className={isGenerating && classes.storyContainerGenerating}
+              >
+                <span className={classes.story}>
+                  {prompt}
+                  {isGenerating && "..."}
                 </span>
-              ) : (
-                <span className={classes.story}>{story}</span>
-              )}
-            </Typography>
-            {isGenerating && <CircularProgress color="secondary" />}
-          </Paper>
+                {isGenerating ? (
+                  <span>
+                    <br />
+                    <i>{"(composing. This will take a minute or two)"}</i>
+                  </span>
+                ) : (
+                  <span className={classes.story}>{story}</span>
+                )}
+              </Typography>{" "}
+              {isGenerating && <CircularProgress color="secondary" />}
+            </CardContent>
+            {!isGenerating && (
+              <CardActions className={classes.cardActions}>
+                <IconButton className={classes.cardIcon} aria-label="delete">
+                  <DeleteIcon />
+                </IconButton>
+              </CardActions>
+            )}
+          </Card>
         ))}
     </div>
   );
