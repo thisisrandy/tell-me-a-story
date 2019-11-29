@@ -43,18 +43,22 @@ export default function BackgroundImageLicense() {
             <img
               className={classes.licenseImage}
               src="https://search.creativecommons.org/static/img/cc_icon.svg"
+              alt="creative commons icon"
             />
             <img
               className={classes.licenseImage}
               src="https://search.creativecommons.org/static/img/cc-by_icon.svg"
+              alt="creative commons attribution icon"
             />
             <img
               className={classes.licenseImage}
               src="https://search.creativecommons.org/static/img/cc-nc_icon.svg"
+              alt="creative commons non commercial icon"
             />
             <img
               className={classes.licenseImage}
               src="https://search.creativecommons.org/static/img/cc-nd_icon.svg"
+              alt="creative commons no derivatives icon"
             />
           </Link>
         </Typography>
