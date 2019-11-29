@@ -66,3 +66,8 @@ I'm the first line.
 print("\n== PARTIAL LAST LINE WITH CURSIVE QUOTES ==")
 wrap_print(clean_children_gpt2(text))
 
+text = """
+I'm the first line, but I have no end
+"""
+print("\n== PARTIAL LAST LINE WITH CURSIVE QUOTES ==")
+wrap_print(clean_children_gpt2(text))

@@ -32,7 +32,7 @@ def clean_children_gpt2(model_text, trim_dangling=True, quote_style="standard"):
         model_text = re.sub("-SQ-", "'", model_text)
     model_text = re.sub(r"([,?!.]['\"])(\w)", "\g<1> \g<2>", model_text)
 
-    if trim_dangling:
+    if trim_dangling and re.match("[.?!]", model_text):
         eos_matcher = re.compile("[.?!]('|''|\")?")
         return model_text[: list(eos_matcher.finditer(model_text))[-1].end() + 1]
 
