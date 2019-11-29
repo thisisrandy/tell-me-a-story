@@ -9,7 +9,12 @@ import {
   Typography,
   CircularProgress,
   IconButton,
-  Tooltip
+  Tooltip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ClipboardIcon from "@material-ui/icons/Assignment";
@@ -34,6 +39,7 @@ export default function Stories() {
     [],
     story => !story.isGenerating
   );
+  const [clearAllDialogOpen, setClearAllDialogOpen] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -79,10 +85,6 @@ export default function Stories() {
     setStories(stories.filter(s => s.id !== id));
   };
 
-  const handleClearAll = () => {
-    setStories([]);
-  };
-
   return (
     <div className={classes.content}>
       <Paper className={classes.paper}>
@@ -115,12 +117,40 @@ export default function Stories() {
               <Button
                 color="primary"
                 variant="contained"
-                disabled={promptDisabled}
-                onClick={handleClearAll}
+                disabled={promptDisabled || stories.length === 0}
+                onClick={() => setClearAllDialogOpen(true)}
               >
                 Clear All
               </Button>
             </Tooltip>
+            <Dialog
+              open={clearAllDialogOpen}
+              onClose={() => setClearAllDialogOpen(false)}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {"Are you sure?"}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  All generated stories will be permanently deleted
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setClearAllDialogOpen(false)}>
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => {
+                    setStories([]);
+                    setClearAllDialogOpen(false);
+                  }}
+                >
+                  Proceed
+                </Button>
+              </DialogActions>
+            </Dialog>
           </span>
         </form>
       </Paper>
