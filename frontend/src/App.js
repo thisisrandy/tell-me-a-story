@@ -5,10 +5,13 @@ import TopBarContainer from "./TopBarContainer";
 import Stories from "./Stories";
 import BackgroundImageLicense from "./BackgroundImageLicense";
 import DefaultRoute from "./DefaultRoute";
+import { useStyles } from "./useStyles";
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <React.Fragment>
+    <div className={classes.App}>
       <CssBaseline />
       <TopBarContainer />
       <Router>
@@ -17,7 +20,7 @@ function App() {
         <Redirect from="/" to="stories" noThrow={true} />
         <DefaultRoute default />
       </Router>
-    </React.Fragment>
+    </div>
   );
 }
 

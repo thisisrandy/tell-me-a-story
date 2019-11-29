@@ -1,6 +1,14 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
+  App: {
+    backgroundImage:
+      "url(https://farm8.staticflickr.com/7358/27284179352_0974613f78_b.jpg)",
+    height: "100vh",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center"
+  },
   content: {
     display: "flex",
     flexDirection: "column",
