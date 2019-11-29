@@ -121,7 +121,7 @@ export default function Stories() {
               >
                 <span className={classes.story}>
                   {prompt}
-                  {isGenerating && "..."}
+                  {isGenerating && " ..."}
                 </span>
                 {isGenerating ? (
                   <span>
