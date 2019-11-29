@@ -33,9 +33,8 @@ def clean_children_gpt2(model_text, trim_dangling=True, quote_style="standard"):
     model_text = re.sub(r"([,?!.]['\"])(\w)", "\g<1> \g<2>", model_text)
 
     if trim_dangling:
-        last_line_idx = model_text.rfind("\n")
-        if not re.search(r"[.!?](\"|'|'')?$", model_text[last_line_idx + 1 :]):
-            return model_text[:last_line_idx]
+        eos_matcher = re.compile("[.?!]('|''|\")?")
+        return model_text[: list(eos_matcher.finditer(model_text))[-1].end() + 1]
 
     return model_text
 

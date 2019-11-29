@@ -59,3 +59,10 @@ I'm the first line.
 print("\n== VALID LAST LINE WITH CURSIVE QUOTES ==")
 wrap_print(clean_children_gpt2(text))
 
+text = """
+I'm the first line.
+``Am I the last line?'' I hope
+"""
+print("\n== PARTIAL LAST LINE WITH CURSIVE QUOTES ==")
+wrap_print(clean_children_gpt2(text))
+
