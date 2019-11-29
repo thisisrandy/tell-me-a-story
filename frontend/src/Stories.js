@@ -8,7 +8,8 @@ import {
   CardContent,
   Typography,
   CircularProgress,
-  IconButton
+  IconButton,
+  Tooltip
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ClipboardIcon from "@material-ui/icons/Assignment";
@@ -135,24 +136,25 @@ export default function Stories() {
               <CardActions className={classes.cardActions}>
                 {[
                   {
-                    ariaLabel: "copy story to clipboard",
+                    label: "Copy story to clipboard",
                     onClick: handleCopy,
                     icon: <ClipboardIcon />
                   },
                   {
-                    ariaLabel: "delete story",
+                    label: "Delete story",
                     onClick: handleDelete,
                     icon: <DeleteIcon />
                   }
-                ].map(({ ariaLabel, onClick, icon }) => (
-                  <IconButton
-                    key={ariaLabel}
-                    className={classes.cardIcon}
-                    aria-label={ariaLabel}
-                    onClick={onClick(id)}
-                  >
-                    {icon}
-                  </IconButton>
+                ].map(({ label, onClick, icon }) => (
+                  <Tooltip key={label} title={label}>
+                    <IconButton
+                      className={classes.cardIcon}
+                      aria-label={label}
+                      onClick={onClick(id)}
+                    >
+                      {icon}
+                    </IconButton>
+                  </Tooltip>
                 ))}
               </CardActions>
             )}
