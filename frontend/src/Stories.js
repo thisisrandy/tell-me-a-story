@@ -16,6 +16,7 @@ import ClipboardIcon from "@material-ui/icons/Assignment";
 import { useStyles } from "./useStyles";
 import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
 import clsx from "clsx";
+import * as clipboard from "clipboard-polyfill/dist/clipboard-polyfill.promise";
 
 // const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
 // const storyLength = 500;
@@ -70,7 +71,7 @@ export default function Stories() {
 
   const handleCopy = id => () => {
     const toCopy = stories.filter(s => s.id === id)[0];
-    navigator.clipboard.writeText(toCopy.prompt + toCopy.story);
+    clipboard.writeText(toCopy.prompt + toCopy.story);
   };
 
   const handleDelete = id => () => {
