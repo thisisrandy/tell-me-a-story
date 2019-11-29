@@ -69,6 +69,8 @@ export default function TopBarContainer() {
           isExternal ? (
             <ListItem
               key={to}
+              button
+              component="a"
               href={to}
               target="_blank"
               rel="noopener noreferrer"
