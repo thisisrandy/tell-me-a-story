@@ -17,6 +17,7 @@ import { useStyles } from "./useStyles";
 import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
 import clsx from "clsx";
 import * as clipboard from "clipboard-polyfill/dist/clipboard-polyfill.promise";
+import dateFormat from "dateformat";
 
 // const apiUrl = "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
 // const storyLength = 500;
@@ -135,6 +136,12 @@ export default function Stories() {
             </CardContent>
             {!isGenerating && (
               <CardActions className={classes.cardActions}>
+                <Typography
+                  variant="caption"
+                  className={classes.cardActionElem}
+                >
+                  {"Generated at " + dateFormat(id)}
+                </Typography>
                 {[
                   {
                     label: "Copy story to clipboard",
@@ -149,7 +156,7 @@ export default function Stories() {
                 ].map(({ label, onClick, icon }) => (
                   <Tooltip key={label} title={label}>
                     <IconButton
-                      className={classes.cardIcon}
+                      className={classes.cardActionElem}
                       aria-label={label}
                       onClick={onClick(id)}
                     >
