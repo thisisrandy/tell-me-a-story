@@ -48,6 +48,11 @@ const useStyles = makeStyles(theme => ({
   formElement: {
     marginTop: "10px"
   },
+  buttonsContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-around"
+  },
   menuButton: {
     marginRight: theme.spacing(2)
   },

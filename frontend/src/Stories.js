@@ -79,6 +79,10 @@ export default function Stories() {
     setStories(stories.filter(s => s.id !== id));
   };
 
+  const handleClearAll = () => {
+    setStories([]);
+  };
+
   return (
     <div className={classes.content}>
       <Paper className={classes.paper}>
@@ -96,15 +100,24 @@ export default function Stories() {
             }
             disabled={promptDisabled}
           />
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            className={classes.formElement}
-            disabled={promptDisabled}
-          >
-            Generate Story
-          </Button>
+          <span className={clsx(classes.formElement, classes.buttonsContainer)}>
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              disabled={promptDisabled}
+            >
+              Generate Story
+            </Button>
+            <Button
+              color="primary"
+              variant="contained"
+              disabled={promptDisabled}
+              onClick={handleClearAll}
+            >
+              Clear All
+            </Button>
+          </span>
         </form>
       </Paper>
       {stories
