@@ -11,6 +11,7 @@ import {
   IconButton
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import ClipboardIcon from "@material-ui/icons/Assignment";
 import { useStyles } from "./useStyles";
 import { useStateWithLocalStorage } from "./useStateWithLocalStorage";
 import clsx from "clsx";
@@ -64,6 +65,15 @@ export default function Stories() {
       ]);
       setPromptDisabled(false);
     }
+  };
+
+  const handleCopy = id => () => {
+    const toCopy = stories.filter(s => s.id === id)[0];
+    navigator.clipboard.writeText(toCopy.prompt + toCopy.story);
+  };
+
+  const handleDelete = id => () => {
+    setStories(stories.filter(s => s.id !== id));
   };
 
   return (
@@ -123,9 +133,27 @@ export default function Stories() {
             </CardContent>
             {!isGenerating && (
               <CardActions className={classes.cardActions}>
-                <IconButton className={classes.cardIcon} aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
+                {[
+                  {
+                    ariaLabel: "copy story to clipboard",
+                    onClick: handleCopy,
+                    icon: <ClipboardIcon />
+                  },
+                  {
+                    ariaLabel: "delete story",
+                    onClick: handleDelete,
+                    icon: <DeleteIcon />
+                  }
+                ].map(({ ariaLabel, onClick, icon }) => (
+                  <IconButton
+                    key={ariaLabel}
+                    className={classes.cardIcon}
+                    aria-label={ariaLabel}
+                    onClick={onClick(id)}
+                  >
+                    {icon}
+                  </IconButton>
+                ))}
               </CardActions>
             )}
           </Card>
