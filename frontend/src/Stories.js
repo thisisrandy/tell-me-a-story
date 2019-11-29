@@ -101,22 +101,26 @@ export default function Stories() {
             disabled={promptDisabled}
           />
           <span className={clsx(classes.formElement, classes.buttonsContainer)}>
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              disabled={promptDisabled}
-            >
-              Generate Story
-            </Button>
-            <Button
-              color="primary"
-              variant="contained"
-              disabled={promptDisabled}
-              onClick={handleClearAll}
-            >
-              Clear All
-            </Button>
+            <Tooltip title="Generate a new story using the prompt you typed">
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                disabled={promptDisabled}
+              >
+                Generate Story
+              </Button>
+            </Tooltip>
+            <Tooltip title="Delete all generated stories">
+              <Button
+                color="primary"
+                variant="contained"
+                disabled={promptDisabled}
+                onClick={handleClearAll}
+              >
+                Clear All
+              </Button>
+            </Tooltip>
           </span>
         </form>
       </Paper>
