@@ -7,7 +7,8 @@ const useStyles = makeStyles(theme => ({
     height: "100vh",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center"
+    backgroundPosition: "center center",
+    backgroundColor: "#fcfeff"
   },
   content: {
     display: "flex",
