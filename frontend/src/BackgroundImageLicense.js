@@ -1,7 +1,8 @@
 import React from "react";
-import { Typography, Paper, Link } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 import { useStyles } from "./useStyles";
 import HomeButton from "./HomeButton";
+import ExternalLink from "./ExternalLink";
 
 export default function BackgroundImageLicense() {
   const classes = useStyles();
@@ -10,35 +11,23 @@ export default function BackgroundImageLicense() {
     <div className={classes.content}>
       <Paper className={classes.paper}>
         <Typography className={classes.formElement}>
-          <Link
-            href="https://www.flickr.com/photos/91894325@N08/27284179352"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink href="https://www.flickr.com/photos/91894325@N08/27284179352">
             &quot;Peter_Rabbit_Radishes_© Frederick Warne & Co., 2002&quot;
-          </Link>{" "}
+          </ExternalLink>{" "}
           by{" "}
-          <Link
-            href="https://www.flickr.com/photos/91894325@N08"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink href="https://www.flickr.com/photos/91894325@N08">
             TaylorHerring
-          </Link>{" "}
+          </ExternalLink>{" "}
           is licensed under{" "}
-          <Link
+          <ExternalLink
             className={classes.ccLicenseType}
             href="https://creativecommons.org/licenses/by-nc-nd/2.0/?ref=ccsearch&atype=html"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             CC BY-NC-ND 2.0
-          </Link>
-          <Link
+          </ExternalLink>
+          <ExternalLink
             className={classes.ccImageLink}
             href="https://creativecommons.org/licenses/by-nc-nd/2.0/?ref=ccsearch&atype=html"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <img
               className={classes.licenseImage}
@@ -60,7 +49,7 @@ export default function BackgroundImageLicense() {
               src="https://search.creativecommons.org/static/img/cc-nd_icon.svg"
               alt="creative commons no derivatives icon"
             />
-          </Link>
+          </ExternalLink>
         </Typography>
         <HomeButton />
       </Paper>
