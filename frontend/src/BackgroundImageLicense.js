@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Paper, Link } from "@material-ui/core";
 import { useStyles } from "./useStyles";
-import ButtonLink from "./ButtonLink";
+import HomeButton from "./HomeButton";
 
 export default function BackgroundImageLicense() {
   const classes = useStyles();
@@ -62,9 +62,7 @@ export default function BackgroundImageLicense() {
             />
           </Link>
         </Typography>
-        <ButtonLink to="/stories" className={classes.formElement}>
-          Return home
-        </ButtonLink>
+        <HomeButton />
       </Paper>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Paper } from "@material-ui/core";
 import { useStyles } from "./useStyles";
-import ButtonLink from "./ButtonLink";
+import HomeButton from "./HomeButton";
 
 export default function DefaultRoute() {
   const classes = useStyles();
@@ -12,9 +12,7 @@ export default function DefaultRoute() {
         <Typography variant="h5" className={classes.formElement}>
           Nothing here (yet?)!
         </Typography>
-        <ButtonLink to="/stories" className={classes.formElement}>
-          Return home
-        </ButtonLink>
+        <HomeButton />
       </Paper>
     </div>
   );
