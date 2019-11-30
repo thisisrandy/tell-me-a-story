@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import {
   Card,
   CardActions,
-  CardContent,
   Typography,
-  CircularProgress,
   IconButton,
   Tooltip
 } from "@material-ui/core";
@@ -15,6 +13,7 @@ import clsx from "clsx";
 import * as clipboard from "clipboard-polyfill/dist/clipboard-polyfill.promise";
 import dateFormat from "dateformat";
 import { useStyles } from "./useStyles";
+import StoryContent from "./StoryContent";
 
 export default function StoryDisplay({ stories, setStories }) {
   const classes = useStyles();
@@ -35,28 +34,11 @@ export default function StoryDisplay({ stories, setStories }) {
         .reverse()
         .map(({ id, prompt, story, isGenerating }) => (
           <Card key={id} className={classes.card}>
-            <CardContent className={classes.cardContent}>
-              <Typography
-                component="p"
-                className={clsx({
-                  [classes.storyContainerGenerating]: isGenerating
-                })}
-              >
-                <span className={classes.story}>
-                  {prompt}
-                  {isGenerating && " ..."}
-                </span>
-                {isGenerating ? (
-                  <span>
-                    <br />
-                    <i>{"(composing. This will take a minute or two)"}</i>
-                  </span>
-                ) : (
-                  <span className={classes.story}>{story}</span>
-                )}
-              </Typography>{" "}
-              {isGenerating && <CircularProgress color="secondary" />}
-            </CardContent>
+            <StoryContent
+              prompt={prompt}
+              story={story}
+              isGenerating={isGenerating}
+            />
             {!isGenerating && (
               <CardActions className={classes.cardActions}>
                 <Typography
