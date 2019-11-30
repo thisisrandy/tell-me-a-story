@@ -185,7 +185,10 @@ export default function Stories() {
               <CardActions className={classes.cardActions}>
                 <Typography
                   variant="caption"
-                  className={classes.cardActionElem}
+                  className={clsx(
+                    classes.cardActionElem,
+                    classes.cardActionText
+                  )}
                 >
                   {"Generated at " + dateFormat(id)}
                 </Typography>

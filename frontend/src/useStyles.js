@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
   cardActions: {
     paddingTop: "0px"
   },
+  cardActionText: {
+    paddingLeft: "10px"
+  },
   cardActionElem: {
     marginLeft: "auto"
   },
