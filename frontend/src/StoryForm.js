@@ -23,8 +23,9 @@ export default function StoryForm({ stories, setStories }) {
   const classes = useStyles();
   const [prompt, setPrompt] = useState("");
   const [promptDisabled, setPromptDisabled] = useState(false);
-  const handlePromptUpdate = ({ target }) => setPrompt(target.value);
   const [clearAllDialogOpen, setClearAllDialogOpen] = useState(false);
+
+  const handlePromptUpdate = ({ target }) => setPrompt(target.value);
 
   const handleSubmit = async e => {
     e.preventDefault();
