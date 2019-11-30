@@ -71,3 +71,10 @@ I'm the first line, but I have no end
 """
 print("\n== PARTIAL LAST LINE WITH CURSIVE QUOTES ==")
 wrap_print(clean_children_gpt2(text))
+
+text = """
+Once upon a time there were many countries spread across the world, and kings, governors, and queens who had something to say about it, not only the worst in their ways, but also the rarest and wealthiest among them.
+But now when it happened that L
+"""
+print("\n== PARTIAL LAST LINE ==")
+wrap_print(clean_children_gpt2(text))
