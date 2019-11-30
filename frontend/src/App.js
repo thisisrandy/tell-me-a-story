@@ -5,6 +5,7 @@ import TopBarContainer from "./TopBarContainer";
 import Stories from "./Stories";
 import BackgroundImageLicense from "./BackgroundImageLicense";
 import DefaultRoute from "./DefaultRoute";
+import AboutPage from "./AboutPage";
 import { useStyles } from "./useStyles";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <TopBarContainer />
       <Router>
         <Stories path="stories" />
+        <AboutPage path="about" />
         <BackgroundImageLicense path="imagelicense" />
         <Redirect from="/" to="stories" noThrow={true} />
         <DefaultRoute default />
