@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     opacity: 0.9
   },
+  selfStart: {
+    alignSelf: "flex-start"
+  },
   card: {
     margin: 20,
     maxWidth: 700,

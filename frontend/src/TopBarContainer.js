@@ -50,7 +50,7 @@ export default function TopBarContainer() {
             icon: <LocalLibraryIcon />
           },
           {
-            to: "/whatisthis",
+            to: "/about",
             text: "What is this thing?",
             icon: <HelpIcon />
           },
