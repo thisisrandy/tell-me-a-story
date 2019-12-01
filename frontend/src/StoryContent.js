@@ -27,7 +27,7 @@ export default function StoryContent({ prompt, story, isGenerating }) {
         ) : (
           <span className={classes.story}>{story}</span>
         )}
-      </Typography>{" "}
+      </Typography>
       {isGenerating && <CircularProgress color="secondary" />}
     </CardContent>
   );
