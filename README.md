@@ -16,4 +16,4 @@ This work is one such example. Using a smaller-scale pre-trained GPT-2 (made [av
 
 ### What else?
 
-In addition to being an example of transfer learning for text generation, this project is also an example of the power of [React](https://reactjs.org/) and [Material-UI](https://material-ui.com/) for building modern web apps. The entire mobile- and touch-friendly, shiny modern user interface was built with fewer than 1000 lines of highly readable code. Check it out!
+In addition to being an example of transfer learning for text generation, this project is also an example of the power of [React](https://reactjs.org/) and [Material-UI](https://material-ui.com/) for building modern web apps. The entire [mobile- and touch-friendly, shiny modern user interface](https://tell-me-a-story-5.herokuapp.com/) was built with fewer than 1000 lines of highly readable code. Check it out!
