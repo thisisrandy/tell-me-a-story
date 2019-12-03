@@ -18,6 +18,19 @@ In the past few years, something remarkable has happened: [deep neural network](
 
 This work is one such example. Using a pre-trained GPT-2 network (the "small" size, 12 layer version made [available](https://github.com/huggingface/transformers) by the folks at [Hugging Face](https://huggingface.co/)) as a base, the model used in this project has been fine-tuned on approximately 100 children's stories made available through [Project Gutenberg](https://www.gutenberg.org/) via the [bAbI](https://research.fb.com/downloads/babi/) project. The result is model that can (or at least tries to) write stories in the combined styles of Charles Dickens, Harriet Elisabeth Beecher Stowe, Lewis Carroll, and 11 other well-loved authors.
 
-### What else?
+## What else?
+
+### UI
 
 In addition to being an example of transfer learning for text generation, this project is also an example of the power of [React](https://reactjs.org/) and [Material-UI](https://material-ui.com/) for building modern web apps. The entire [mobile- and touch-friendly, shiny modern user interface](https://tell-me-a-story-5.herokuapp.com/) was built with fewer than 1000 lines of highly readable code. Check it out!
+
+### I've seen the GPT-2 Ovid's Unicorn text. This seems... less good
+
+Correct. As mentioned above, this project uses the small version of GPT-2, which has a "mere" 117M parameters :smirk:. By contrast, the XL model, the one they originally said was too dangerous to release, has 1558M parameters :flushed:.
+
+So why use the small one?
+
+- Training: The model was fine-tuned on [Google Colab](https://colab.research.google.com/), which is an awesome free service. Unfortunately, the runtimes they provide don't have enough memory to handle anything larger than the small model, so fine-tuning is not free at this time.
+- Hosting: The model is hosted as cheaply as possible (and as such quite suboptimally) on Google Cloud Run (see [the backend readme](backend/README.md) for more details). Cloud Run is CPU-only and supports a maximum of 2GB memory per worker, so the larger models would not only be prohibitively slow (the small model already takes over a minute to generate a 500 token story), but actually wouldn't even fit in memory.
+
+That said, if you think this is super cool and want to run it on your [Cloud TPUs](https://cloud.google.com/tpu/) (or sponsor me to set that up), you're more than welcome to. Just make sure to give credit where credit's due :wink:.
