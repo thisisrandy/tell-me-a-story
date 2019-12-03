@@ -1,5 +1,9 @@
 # Tell Me a Story
 
+<p align="center">
+  <img alt="Tell Me a Story screenshot" src="images/screenshot.png">
+</p>
+
 What happens when a computer tries to write a children's story? Why, [this](https://tell-me-a-story-5.herokuapp.com/), of course!
 
 There is a long history of [statistical language models](https://en.wikipedia.org/wiki/Language_model) in [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing), beginning with the humble [n-gram model](https://en.wikipedia.org/wiki/N-gram), which gathers statistics over a [corpus](https://en.wikipedia.org/wiki/Text_corpus) about the co-occurrence of n (1, 2, 3, 4...) words or sub-word tokens, to the [probabilistic context free grammar](https://en.wikipedia.org/wiki/Probabilistic_context-free_grammar), which imposes statistical likelihood over a pre-defined grammar, to [neural language models](https://en.wikipedia.org/wiki/Language_model#Neural_network), which harness biologically inspired [neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network) in a variety of architectures to tackle the problem of language modeling.
