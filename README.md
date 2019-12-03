@@ -31,6 +31,6 @@ Correct. As mentioned above, this project uses the small version of GPT-2, which
 So why use the small one?
 
 - Training: The model was fine-tuned on [Google Colab](https://colab.research.google.com/), which is an awesome free service. Unfortunately, the runtimes they provide don't have enough memory to handle anything larger than the small model, so fine-tuning is not free at this time.
-- Hosting: The model is hosted as cheaply as possible (and as such quite suboptimally) on Google Cloud Run (see [the backend readme](backend/README.md) for more details). Cloud Run is CPU-only and supports a maximum of 2GB memory per worker, so the larger models would not only be prohibitively slow (the small model already takes over a minute to generate a 500 token story), but actually wouldn't even fit in memory.
+- Hosting: The model is hosted as cheaply as possible (and as such quite suboptimally) on [Google Cloud Run](https://cloud.google.com/run/) (see [the backend readme](backend/README.md) for more details). Cloud Run is CPU-only and supports a maximum of 2GB memory per worker, so the larger models would not only be prohibitively slow (the small model already takes over a minute to generate a 500 token story), but actually wouldn't even fit in memory.
 
 That said, if you think this is super cool and want to run it on your [Cloud TPUs](https://cloud.google.com/tpu/) (or sponsor me to set that up), you're more than welcome to. Just make sure to give credit where credit's due :wink:.
