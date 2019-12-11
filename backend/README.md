@@ -3,9 +3,11 @@
 ## Model generation
 
 Run the first section of `tell-me-a-story_gpt2.ipynb` to generate the model.
-Download the complete model directory to `models/`. You can try it directly
-with `test_inference.py` or by running `api.py` and navigating to
-`localhost:8008`.
+Download the complete model directory to `models/`. Note that rather than
+attempting to download the model directly from Colab, it is _much_ faster to
+save the model to your Google Drive and download from there (steps in the
+notebook). You can try it directly with `test_inference.py` or by running
+`api.py` and navigating to `localhost:8008`.
 
 ## Deployment to Google Cloud Run
 
