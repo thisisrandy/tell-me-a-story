@@ -14,9 +14,11 @@ import {
 import clsx from "clsx";
 import { useStyles } from "./useStyles";
 
-const apiUrl =
-  "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
-const storyLength = 500;
+const apiUrl = "http://localhost:8008/story?quote_style=cursive&";
+const storyLength = 50;
+// const apiUrl =
+//   "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
+// const storyLength = 500;
 
 export default function StoryForm({ stories, setStories }) {
   const classes = useStyles();
