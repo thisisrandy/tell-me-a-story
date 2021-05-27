@@ -4,9 +4,11 @@ const useStyles = makeStyles((theme) => ({
   App: {
     backgroundImage:
       "url(https://farm8.staticflickr.com/7358/27284179352_0974613f78_b.jpg)",
-    height: "100vh",
-    backgroundSize: "contain",
+    minHeight: "100vh",
+    height: "100%",
+    backgroundSize: "85vh",
     backgroundRepeat: "no-repeat",
+    backgroundPosition: "center top",
     backgroundColor: "#fcfeff",
   },
   content: {
