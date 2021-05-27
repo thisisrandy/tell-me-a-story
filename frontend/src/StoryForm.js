@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
-  DialogActions
+  DialogActions,
 } from "@material-ui/core";
 import clsx from "clsx";
 import { useStyles } from "./useStyles";
@@ -26,7 +26,7 @@ export default function StoryForm({ stories, setStories }) {
 
   const handlePromptUpdate = ({ target }) => setPrompt(target.value);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (prompt) {
       setPrompt("");
@@ -39,8 +39,8 @@ export default function StoryForm({ stories, setStories }) {
         {
           id: id,
           prompt: prompt,
-          isGenerating: true
-        }
+          isGenerating: true,
+        },
       ]);
       const res = await fetch(
         `${apiUrl}length=${storyLength}&prompt=${encodeURI(prompt)}`
@@ -48,14 +48,14 @@ export default function StoryForm({ stories, setStories }) {
       const json = await res.json();
       // stories is stale inside this closure. we can get the fresh value by
       // using a functional update
-      setStories(stories => [
+      setStories((stories) => [
         ...stories.slice(0, stories.length - 1),
         {
           id: id,
           prompt: json.prompt,
           story: json.story,
-          isGenerating: false
-        }
+          isGenerating: false,
+        },
       ]);
       setPromptDisabled(false);
     }
@@ -132,5 +132,5 @@ export default function StoryForm({ stories, setStories }) {
 
 StoryForm.propTypes = {
   stories: PropTypes.array.isRequired,
-  setStories: PropTypes.func.isRequired
+  setStories: PropTypes.func.isRequired,
 };
