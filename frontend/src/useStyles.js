@@ -1,19 +1,18 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   App: {
     backgroundImage:
       "url(https://farm8.staticflickr.com/7358/27284179352_0974613f78_b.jpg)",
     height: "100vh",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
-    backgroundColor: "#fcfeff"
+    backgroundColor: "#fcfeff",
   },
   content: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   paper: {
     margin: 20,
@@ -22,76 +21,76 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    opacity: 0.9
+    opacity: 0.9,
   },
   selfStart: {
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   card: {
     margin: 20,
     maxWidth: 700,
-    opacity: 0.9
+    opacity: 0.9,
   },
   cardActions: {
-    paddingTop: "0px"
+    paddingTop: "0px",
   },
   cardActionText: {
-    paddingLeft: "10px"
+    paddingLeft: "10px",
   },
   cardActionElem: {
-    marginLeft: "auto"
+    marginLeft: "auto",
   },
   cardContent: {
     paddingBottom: "0px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   form: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   formElement: {
-    marginTop: "10px"
+    marginTop: "10px",
   },
   buttonsContainer: {
     width: "100%",
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   storyContainerGenerating: {
-    paddingBottom: "10px"
+    paddingBottom: "10px",
   },
   story: {
     whiteSpace: "pre-line",
     fontFamily: "'Lovers Quarrel', cursive",
-    fontSize: "2rem"
+    fontSize: "2rem",
   },
   title: {
-    fontFamily: "'Lovers Quarrel', cursive"
+    fontFamily: "'Lovers Quarrel', cursive",
   },
   topDrawer: {
-    width: "auto"
+    width: "auto",
   },
   ccLicenseType: {
-    marginRight: "5px"
+    marginRight: "5px",
   },
   ccImageLink: {
     display: "inline-block",
     whiteSpace: "none",
     marginTop: "2px",
     marginLeft: "3px",
-    height: "22px !important"
+    height: "22px !important",
   },
   licenseImage: {
     height: "inherit",
     marginRight: "3px",
-    display: "inline-block"
-  }
+    display: "inline-block",
+  },
 }));
 
 export { useStyles };
