@@ -14,7 +14,7 @@ httptools==0.0.13
 idna==2.8
 idna-ssl==1.1.0
 jmespath==0.9.4
-joblib==0.14.0
+joblib==1.2.0
 multidict==4.6.1
 numpy==1.22.0
 pathspec==0.6.0
