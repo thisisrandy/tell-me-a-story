@@ -29,7 +29,7 @@ starlette==0.27.0
 toml==0.10.0
 torch==1.13.1
 tqdm==4.38.0
-transformers==2.1.1
+transformers==4.30.0
 typed-ast==1.4.0
 typing-extensions==3.7.4.1
 urllib3==1.26.5
