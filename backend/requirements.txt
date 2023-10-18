@@ -32,7 +32,7 @@ tqdm==4.38.0
 transformers==4.30.0
 typed-ast==1.4.0
 typing-extensions==3.7.4.1
-urllib3==1.26.17
+urllib3==1.26.18
 uvicorn==0.11.7
 uvloop==0.14.0
 websockets==9.1
