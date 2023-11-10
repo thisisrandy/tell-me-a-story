@@ -16,8 +16,6 @@ import MuiAlert from "@material-ui/lab/Alert";
 import clsx from "clsx";
 import { useStyles } from "./useStyles";
 
-const apiUrl =
-  "https://story-teller-3vkz2hdbua-ue.a.run.app/story?quote_style=cursive&";
 const storyLength = 500;
 
 function Alert(props) {
@@ -58,7 +56,11 @@ export default function StoryForm({ stories, setStories }) {
 
       try {
         const res = await fetch(
-          `${apiUrl}length=${storyLength}&prompt=${encodeURI(prompt)}`
+          `${
+            process.env.REACT_APP_STORY_SERVER_URL
+          }/story?quote_style=cursive&length=${storyLength}&prompt=${encodeURI(
+            prompt
+          )}`
         );
         const json = await res.json();
         // stories is stale inside this closure. we can get the fresh value by

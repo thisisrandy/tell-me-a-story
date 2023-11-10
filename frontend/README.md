@@ -1,7 +1,7 @@
 # Frontend
 
-Begin by changing `apiUrl` at the top of [StoryForm.js](src/StoryForm.js) to your API url (see
-the instructions in [backend/README.md](../backend/README.md)).
+Begin by changing `REACT_APP_STORY_SERVER_URL` in [.env](.env) to your API url
+(see the instructions in [backend/README.md](../backend/README.md)).
 
 ## Deploy to [ZEIT](https://zeit.co/)
 
