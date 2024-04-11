@@ -11,7 +11,7 @@ Click==7.0
 docutils==0.15.2
 h11==0.8.1
 httptools==0.0.13
-idna==2.8
+idna==3.7
 idna-ssl==1.1.0
 jmespath==0.9.4
 joblib==1.2.0
