@@ -27,7 +27,7 @@ sentencepiece==0.1.95
 six==1.13.0
 starlette==0.36.2
 toml==0.10.0
-torch==1.13.1
+torch==2.2.0
 tqdm==4.66.3
 transformers==4.38.0
 typed-ast==1.4.0
